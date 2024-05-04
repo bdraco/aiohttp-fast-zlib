@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aiohttp-fast-zlib"
-version = "0.0.0"
+version = "0.1.0"
 description = "Use the fastest installed zlib compatible library with aiohttp"
 authors = ["J. Nick Koston <nick@koston.org>"]
 license = "Apache Software License 2.0"
