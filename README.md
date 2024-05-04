@@ -57,7 +57,6 @@ aiohttp_zlib_fast.enable()
 aiohttp_zlib_fast.enable()
 ```
 
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
