@@ -1,0 +1,21 @@
+# Changes here will be overwritten by Copier
+_commit: 292018d
+_src_path: gh:browniebroke/pypackage-template
+add_me_as_contributor: false
+copyright_year: '2024'
+documentation: false
+email: nick@koston.org
+full_name: J. Nick Koston
+github_username: bdraco
+has_cli: false
+initial_commit: true
+open_source_license: Apache Software License 2.0
+package_name: aiohttp_fast_zlib
+project_name: aiohttp-fast-zlib
+project_short_description: Use the fastest installed zlib compatible library with
+    aiohttp
+project_slug: aiohttp-fast-zlib
+run_poetry_install: true
+setup_github: true
+setup_pre_commit: true
+
