@@ -1,5 +1,7 @@
 """Fast zlib module for aiohttp."""
 
+__version__ = "0.0.0"
+
 import importlib
 import logging
 import zlib as zlib_original
