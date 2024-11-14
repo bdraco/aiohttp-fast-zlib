@@ -2,6 +2,7 @@
 
 __version__ = "0.1.1"
 
+import contextlib
 import importlib
 import logging
 import zlib as zlib_original
@@ -34,8 +35,10 @@ TARGETS = [
     "web_response",
 ]
 
+_PATCH_WEBSOCKET_WRITER = False
+
 if _AIOHTTP_VERSION >= (3, 11):
-    TARGETS.append("_websocket.writer")
+    _PATCH_WEBSOCKET_WRITER = True
 else:
     TARGETS.append("http_websocket")
 
@@ -55,6 +58,10 @@ def enable() -> None:
             continue
         if module := getattr(aiohttp, location, None):
             module.zlib = best_zlib
+    if _PATCH_WEBSOCKET_WRITER:
+        with contextlib.suppress(ImportError):
+            mod = importlib.import_module("aiohttp._websocket.writer")
+            mod.zlib = best_zlib  # type: ignore[attr-defined]
 
 
 def disable() -> None:
@@ -62,3 +69,7 @@ def disable() -> None:
     for location in TARGETS:
         if module := getattr(aiohttp, location, None):
             module.zlib = zlib_original
+    if _PATCH_WEBSOCKET_WRITER:
+        with contextlib.suppress(ImportError):
+            mod = importlib.import_module("aiohttp._websocket.writer")
+            mod.zlib = zlib_original  # type: ignore[attr-defined]
