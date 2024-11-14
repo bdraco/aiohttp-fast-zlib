@@ -11,6 +11,9 @@ import aiohttp
 
 _LOGGER = logging.getLogger(__name__)
 
+_AIOHTTP_SPLIT_VERSION = aiohttp.__version__.split(".")
+_AIOHTTP_VERSION = (int(_AIOHTTP_SPLIT_VERSION[0]), int(_AIOHTTP_SPLIT_VERSION[1]))
+
 if TYPE_CHECKING:
     best_zlib = zlib_original
 
@@ -22,15 +25,19 @@ except ImportError:
     except ImportError:
         best_zlib = zlib_original
 
-TARGETS = (
+TARGETS = [
     "compression_utils",
     "http_writer",
-    "http_websocket",
     "http_writer",
     "http_parser",
     "multipart",
     "web_response",
-)
+]
+
+if _AIOHTTP_VERSION >= (3, 11):
+    TARGETS.append("_websocket.writer")
+else:
+    TARGETS.append("http_websocket")
 
 
 def enable() -> None:

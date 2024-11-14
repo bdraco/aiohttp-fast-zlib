@@ -2,6 +2,7 @@ import zlib as zlib_original
 from unittest.mock import patch
 
 import aiohttp.http_websocket
+import pytest
 
 import aiohttp_fast_zlib
 
@@ -13,6 +14,10 @@ except ImportError:
     from zlib_ng import zlib_ng as expected_zlib
 
 
+@pytest.mark.skipif(
+    aiohttp_fast_zlib._AIOHTTP_VERSION >= (3, 11),
+    reason="Only works with aiohttp less than 3.11+",
+)
 def test_enable_disable():
     """Test enable/disable."""
     assert aiohttp.http_websocket.zlib is zlib_original
@@ -22,6 +27,24 @@ def test_enable_disable():
     assert aiohttp.http_websocket.zlib is zlib_original
     aiohttp_fast_zlib.enable()
     assert aiohttp.http_websocket.zlib is expected_zlib
+    aiohttp_fast_zlib.disable()
+
+
+@pytest.mark.skipif(
+    aiohttp_fast_zlib._AIOHTTP_VERSION < (3, 11),
+    reason="Only works with aiohttp >= 3.11",
+)
+def test_enable_disable_greater_than_311():
+    """Test enable/disable."""
+    from aiohttp._websocket import writer
+
+    assert writer.zlib is zlib_original
+    aiohttp_fast_zlib.enable()
+    assert writer.zlib is expected_zlib
+    aiohttp_fast_zlib.disable()
+    assert writer.zlib is zlib_original
+    aiohttp_fast_zlib.enable()
+    assert writer.zlib is expected_zlib
     aiohttp_fast_zlib.disable()
 
 
