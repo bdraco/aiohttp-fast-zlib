@@ -2,6 +2,7 @@
 
 __version__ = "0.1.1"
 
+import contextlib
 import importlib
 import logging
 import zlib as zlib_original
@@ -10,6 +11,9 @@ from typing import TYPE_CHECKING
 import aiohttp
 
 _LOGGER = logging.getLogger(__name__)
+
+_AIOHTTP_SPLIT_VERSION = aiohttp.__version__.split(".")
+_AIOHTTP_VERSION = (int(_AIOHTTP_SPLIT_VERSION[0]), int(_AIOHTTP_SPLIT_VERSION[1]))
 
 if TYPE_CHECKING:
     best_zlib = zlib_original
@@ -22,15 +26,21 @@ except ImportError:
     except ImportError:
         best_zlib = zlib_original
 
-TARGETS = (
+TARGETS = [
     "compression_utils",
     "http_writer",
-    "http_websocket",
     "http_writer",
     "http_parser",
     "multipart",
     "web_response",
-)
+]
+
+_PATCH_WEBSOCKET_WRITER = False
+
+if _AIOHTTP_VERSION >= (3, 11):
+    _PATCH_WEBSOCKET_WRITER = True
+else:
+    TARGETS.append("http_websocket")
 
 
 def enable() -> None:
@@ -48,6 +58,10 @@ def enable() -> None:
             continue
         if module := getattr(aiohttp, location, None):
             module.zlib = best_zlib
+    if _PATCH_WEBSOCKET_WRITER:
+        with contextlib.suppress(ImportError):
+            mod = importlib.import_module("aiohttp._websocket.writer")
+            mod.zlib = best_zlib  # type: ignore[attr-defined]
 
 
 def disable() -> None:
@@ -55,3 +69,7 @@ def disable() -> None:
     for location in TARGETS:
         if module := getattr(aiohttp, location, None):
             module.zlib = zlib_original
+    if _PATCH_WEBSOCKET_WRITER:
+        with contextlib.suppress(ImportError):
+            mod = importlib.import_module("aiohttp._websocket.writer")
+            mod.zlib = zlib_original  # type: ignore[attr-defined]
