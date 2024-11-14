@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.0 (2024-11-14)
+
+### Feature
+
+- Add support for aiohttp 3.11+ (#21) ([`9a84c80`](https://github.com/bdraco/aiohttp-fast-zlib/commit/9a84c803da39aae9e4093061ac8c2750f39a28d9))
+
 ## v0.1.1 (2024-06-24)
 
 ### Fix
