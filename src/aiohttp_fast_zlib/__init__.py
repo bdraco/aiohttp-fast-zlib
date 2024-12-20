@@ -1,6 +1,6 @@
 """Fast zlib module for aiohttp."""
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 import contextlib
 import importlib
