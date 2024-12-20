@@ -41,8 +41,8 @@ zlib is be a bottleneck for aiohttp, especially for websocket connections. `aioh
 
 Install this via pip (or your favourite package manager):
 
-`pip install aiohttp-zlib-fast[isal]`
-`pip install aiohttp-zlib-fast[zlib-ng]`
+`pip install aiohttp-fast-zlib[isal]`
+`pip install aiohttp-fast-zlib[zlib-ng]`
 
 ## Usage
 
