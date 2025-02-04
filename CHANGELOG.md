@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.2 (2025-02-04)
+
+### Fix
+
+
+- Update poetry to v2 + add license to metadata (#34) ([`ebdc785`](https://github.com/bdraco/aiohttp-fast-zlib/commit/ebdc785d60e30b70a7ace0394402d250085a2cf3))
+
+
 ## v0.2.1 (2024-12-20)
 
 ### Fix
