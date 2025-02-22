@@ -9,9 +9,9 @@ requires-python = ">=3.9"
 dynamic = ["classifiers", "dependencies", "optional-dependencies"]
 
 [project.urls]
-"Repository" = "https://github.com/bdraco/aiohttp-fast-zlib"
-"Bug Tracker" = "https://github.com/bdraco/aiohttp-fast-zlib/issues"
-"Changelog" = "https://github.com/bdraco/aiohttp-fast-zlib/blob/main/CHANGELOG.md"
+"Repository" = "https://github.com/bluetooth-devices/aiohttp-fast-zlib"
+"Bug Tracker" = "https://github.com/bluetooth-devices/aiohttp-fast-zlib/issues"
+"Changelog" = "https://github.com/bluetooth-devices/aiohttp-fast-zlib/blob/main/CHANGELOG.md"
 
 [tool.poetry]
 classifiers = [
