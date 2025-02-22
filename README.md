@@ -1,11 +1,11 @@
 # aiohttp-fast-zlib
 
 <p align="center">
-  <a href="https://github.com/bdraco/aiohttp-fast-zlib/actions/workflows/ci.yml?query=branch%3Amain">
-    <img src="https://img.shields.io/github/actions/workflow/status/bdraco/aiohttp-fast-zlib/ci.yml?branch=main&label=CI&logo=github&style=flat-square" alt="CI Status" >
+  <a href="https://github.com/bluetooth-devices/aiohttp-fast-zlib/actions/workflows/ci.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/github/actions/workflow/status/bluetooth-devices/aiohttp-fast-zlib/ci.yml?branch=main&label=CI&logo=github&style=flat-square" alt="CI Status" >
   </a>
-  <a href="https://codecov.io/gh/bdraco/aiohttp-fast-zlib">
-    <img src="https://img.shields.io/codecov/c/github/bdraco/aiohttp-fast-zlib.svg?logo=codecov&logoColor=fff&style=flat-square" alt="Test coverage percentage">
+  <a href="https://codecov.io/gh/bluetooth-devices/aiohttp-fast-zlib">
+    <img src="https://img.shields.io/codecov/c/github/bluetooth-devices/aiohttp-fast-zlib.svg?logo=codecov&logoColor=fff&style=flat-square" alt="Test coverage percentage">
   </a>
 </p>
 <p align="center">
@@ -29,7 +29,7 @@
 
 ---
 
-**Source Code**: <a href="https://github.com/bdraco/aiohttp-fast-zlib" target="_blank">https://github.com/bdraco/aiohttp-fast-zlib </a>
+**Source Code**: <a href="https://github.com/bluetooth-devices/aiohttp-fast-zlib" target="_blank">https://github.com/bluetooth-devices/aiohttp-fast-zlib </a>
 
 ---
 
